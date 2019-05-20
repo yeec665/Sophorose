@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="sw8" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/sw8" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DHAVE_REMOTE" />
+					<Add directory="D:/c/codeblocks/sw8/" />
+				</Compiler>
+				<Linker>
+					<Add library="D:/c/codeblocks/sw8/lib/libpacket.a" />
+					<Add library="D:/c/codeblocks/sw8/lib/libwpcap.a" />
+					<Add library="D:/c/codeblocks/sw8/lib/Packet.lib" />
+					<Add library="D:/c/codeblocks/sw8/lib/wpcap.lib" />
+					<Add directory="D:/c/codeblocks/sw8/" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="Packet32.h" />
+		<Unit filename="Win32-Extensions.h" />
+		<Unit filename="bittypes.h" />
+		<Unit filename="ip6_misc.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="pcap-bpf.h" />
+		<Unit filename="pcap-namedb.h" />
+		<Unit filename="pcap-stdinc.h" />
+		<Unit filename="pcap.h" />
+		<Unit filename="pcap/bluetooth.h" />
+		<Unit filename="pcap/bpf.h" />
+		<Unit filename="pcap/namedb.h" />
+		<Unit filename="pcap/pcap.h" />
+		<Unit filename="pcap/sll.h" />
+		<Unit filename="pcap/usb.h" />
+		<Unit filename="pcap/vlan.h" />
+		<Unit filename="remote-ext.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

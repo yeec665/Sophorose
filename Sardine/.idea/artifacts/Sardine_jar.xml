@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Sardine:jar">
+    <output-path>D:/Program Files/apache-tomcat-9.0.16/lib</output-path>
+    <root id="archive" name="Sardine.jar">
+      <element id="module-output" name="Sardine" />
+    </root>
+  </artifact>
+</component>

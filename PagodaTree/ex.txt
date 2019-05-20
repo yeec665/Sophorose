@@ -1,0 +1,40 @@
+HttpServletRequest
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpServletRequest$1.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpServletRequest.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpServletRequestWrapper.class
+HttpServletResponse
+D:\Program Files\apache-tomcat-9.0.16\lib\catalina.jar!org/apache/catalina/filters/ExpiresFilter$XHttpServletResponse.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpServletResponse.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpServletResponseWrapper.class
+JspWriter
+D:\Program Files\apache-tomcat-9.0.16\lib\jasper.jar!org/apache/jasper/runtime/JspWriterImpl.class
+D:\Program Files\apache-tomcat-9.0.16\lib\jsp-api.jar!javax/servlet/jsp/JspWriter.class
+HttpSession
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpSession.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpSessionActivationListener.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpSessionAttributeListener.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpSessionBindingEvent.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpSessionBindingListener.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpSessionContext.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpSessionEvent.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpSessionIdListener.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/http/HttpSessionListener.class
+ServletContext
+D:\Program Files\apache-tomcat-9.0.16\lib\catalina.jar!org/apache/catalina/core/StandardContext$NoPluggabilityServletContext.class
+D:\Program Files\apache-tomcat-9.0.16\lib\catalina.jar!org/apache/catalina/ssi/SSIServletExternalResolver$ServletContextAndPath.class
+D:\Program Files\apache-tomcat-9.0.16\lib\catalina.jar!org/apache/catalina/valves/ExtendedAccessLogValve$ServletContextElement.class
+D:\Program Files\apache-tomcat-9.0.16\lib\jasper.jar!org/apache/jasper/servlet/JspCServletContext.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/ServletContext.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/ServletContextAttributeEvent.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/ServletContextAttributeListener.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/ServletContextEvent.class
+D:\Program Files\apache-tomcat-9.0.16\lib\servlet-api.jar!javax/servlet/ServletContextListener.class
+
+Wrong host name : CommunicationsException / SQLRecoverableException
+Wrong user name : Access denied for user
+
+"C:\Program Files (x86)\Java\jdk1.8.0_171\bin\java" -Djava.library.path=D:\Android\Java\librarian\src "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017.1.1\lib\idea_rt.jar=38661:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2017.1.1\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\charsets.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\deploy.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\ext\access-bridge-32.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\ext\cldrdata.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\ext\dnsns.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\ext\jaccess.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\ext\jfxrt.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\ext\localedata.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\ext\nashorn.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\ext\sunec.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\ext\sunjce_provider.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\ext\sunmscapi.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\ext\sunpkcs11.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\ext\zipfs.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\javaws.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\jce.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\jfr.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\jfxswt.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\jsse.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\management-agent.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\plugin.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\resources.jar;C:\Program Files (x86)\Java\jdk1.8.0_171\jre\lib\rt.jar;D:\Android\Java\librarian\out\production\librarian;D:\Android\Java\librarian\src\mysql-connector-java-8.0.12.jar;D:\Android\Java\librarian\src\RXTXcomm.jar" indi.hiro.librarian.DbStart
+1
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER ON *.* TO 'yad'@'%' WITH GRANT OPTION
+
+Process finished with exit code 0

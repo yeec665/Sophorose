@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1554480711 source:d:\c\codeblocks\sw8\main.cpp
+	<iostream>
+	<sstream>
+	"pcap.h"
+
+1254849604 d:\c\codeblocks\sw8\pcap.h
+	<pcap/pcap.h>
+
+1554173788 d:\c\codeblocks\sw8\\pcap\pcap.h
+	<pcap-stdinc.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<sys/types.h>
+	<sys/time.h>
+	<pcap/bpf.h>
+	<stdio.h>
+	<Win32-Extensions.h>
+	<remote-ext.h>
+
+1254849604 d:\c\codeblocks\sw8\\pcap-stdinc.h
+	<winsock2.h>
+	<fcntl.h>
+	"bittypes.h"
+	<time.h>
+	<io.h>
+	"IP6_misc.h"
+	<stdint.h>
+
+1254849604 d:\c\codeblocks\sw8\\bittypes.h
+
+1254849598 d:\c\codeblocks\sw8\\ip6_misc.h
+	<winsock2.h>
+	<ws2tcpip.h>
+
+1254849604 d:\c\codeblocks\sw8\\pcap\bpf.h
+
+1155115018 d:\c\codeblocks\sw8\\win32-extensions.h
+
+1554173788 d:\c\codeblocks\sw8\\remote-ext.h
+

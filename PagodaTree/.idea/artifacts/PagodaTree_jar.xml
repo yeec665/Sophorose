@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PagodaTree:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PagodaTree_jar</output-path>
+    <root id="archive" name="PagodaTree.jar">
+      <element id="module-output" name="PagodaTree" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/mysql-connector-java-8.0.12.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

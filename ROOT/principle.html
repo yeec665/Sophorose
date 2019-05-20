@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/image/favicon.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="navigation_bar.js"></script>
+    <title>蜜罐后台监控系统-系统原理</title>
+</head>
+<body>
+<div id='title'>“槐树花”蜜罐后台监控系统</div>
+<div id='subtitle'>&nbsp;&nbsp;&nbsp;&nbsp;NESC, ZJU</div>
+<div id='navigationbar'><ul>
+    <li class='active'><a href='#'><span>系统简介</span></a><ul>
+        <li><a href='index.html'><span>首页</span></a></li>
+        <li><a href='background.html'><span>研究背景</span></a></li>
+        <li><a href='structure.html'><span>系统结构</span></a></li>
+        <li><a href='principle.html'><span>系统原理</span></a></li>
+        <li><a href='result.html'><span>结果与分析</span></a></li>
+    </ul></li>
+    <li><a href='#'><span>用户</span></a><ul>
+        <li><a href='login.jsp'><span>登录/注销</span></a></li>
+        <li><a href='grant.jsp'><span>权限管理</span></a></li>
+    </ul></li>
+    <li><a href='#'><span>监控记录</span></a><ul>
+        <li><a href='s7_events.jsp'><span>事件记录</span></a></li>
+        <li><a href='s7_volume.jsp'><span>访问量</span></a></li>
+        <li><a href='ids_captures.jsp'><span>端口访问</span></a></li>
+        <li><a href='ids_statistics.jsp'><span>端口扫描记录</span></a></li>
+        <li><a href='ids_analysis.jsp'><span>端口扫描分析</span></a></li>
+    </ul></li>
+    <li><a href='#'><span>连接到蜜罐</span></a><ul>
+        <li><a href='honeypot_info.jsp'><span>读取状态信息</span></a></li>
+        <li><a href='honeypot_data.jsp'><span>读取数据</span></a></li>
+    </ul></li>
+</ul></div>
+<div id='content'>
+    <p><h1>3&nbsp;系统原理</h1></p>
+    <p><h2>3.1&nbsp;S7协议</h2></p>
+    <p>为了配置、监控、数据交换的方便，PLC都具有多种通信功能。S7-300/400系列PLC集成了MPI接口、PROFIBUS-DP通信模块、工业以太网通信模块以及点对点通信模块。其中，以太网模块能够连接到互联网进行远程管理，它使用的S7协议是我们制造蜜罐所需要实现的重点。</p>
+    <p>S7协议是西门子公司的专利通信协议，用于西门子S7-300/400系列PLC。在ISO的7层网络模型中，S7协议占据了会话层、应用层和表示层，传输层是TCP的变种——ISO&nbsp;on&nbsp;TCP（RFC&nbsp;1006），其余与以太网相同。它的功能包括PLC编程、数据交换、故障诊断等。</p>
+    <center>
+    <table border='1'>
+    <tr><th>Layer index</th><th>OSI layer</th><th>Protocol</th></tr>
+    <tr><td>7</td><td>Application Layer</td><td>S7 communication</td></tr>
+    <tr><td>6</td><td>Presentation Layer</td><td>S7 communication</td></tr>
+    <tr><td>5</td><td>Session Layer</td><td>S7 communication</td></tr>
+    <tr><td>4</td><td>Transport Layer</td><td>ISO-on-TCP (RFC 1006)</td></tr>
+    <tr><td>3</td><td>Network Layer</td><td>IP</td></tr>
+    <tr><td>2</td><td>Data Link Layer</td><td>Ethernet</td></tr>
+    <tr><td>1</td><td>Physical Layer</td><td>Ethernet</td></tr>
+    </table>
+    <p>表1&nbsp;S7协议栈</p>
+    <p><img src='image/s7_protocol.png'></p>
+    <p>图1&nbsp;S7协议封装</p>
+    </center>
+    <p>Snap7可以使用S7协议扮演Client、Server、Partner三种角色，在制造蜜罐时，主要用到的是Server。Snap7&nbsp;Server模拟了西门子PLC中通讯处理器（CP）的功能，接受来自Client（PLC编程软件、PLC扫描器、HMI设备、SCADA系统）的连接并应答请求。</p>
+    <p>Snap7&nbsp;Server面向客户端提供以下功能：<ul>
+    <li>协商PDU：建立会话时一般会设定所传输的S7报文的最大长度。如果需要传输的内容超过最大长度，就会分多次传输；</li>
+    <li>PLC控制：包括CPU冷启动、CPU暖启动、CPU停止运行、内存清理、将RAM拷贝至ROM等功能；</li>
+    <li>时钟：读写PLC自带的时钟；</li>
+    <li>安全：设定和清除会话密码；</li>
+    <li>读取系统状态：系统状态包括相当多的内容，如硬件的型号、配置、工作状态等。PLC扫描器最常访问的是系统状态子表0x0011的设备序列号和0x001C的组件标识记录（包括CPU型号、生产商、设备名称等）。</li>
+    <li>读写数据：以不同的数据类型（位、字节、字、双字、浮点型、日期、计数器、计时器）读写各存储区域（输入映像区、输出寄存器、位寄存器、计数器、计时器、数据块）；</li>
+    <li>读取块信息：获取块列表、枚举块、获取块信息，目前支持的块包括组织块（OB）、数据块（DB）、功能块（FB）、功能（FC）、系统数据块（SDB）；</li>
+    <li>上传下载块：读写上述几种块的内容，一般用于PLC编程。</li>
+    </ul></p>
+    <p>Snap7&nbsp;Server封装的API提供以下功能：<ul>
+    <li>管理功能：创建/销毁服务器、启动/停止服务器、读写服务器参数；</li>
+    <li>存储区功能：注册/注销存储区、锁定/解锁存储区；</li>
+    <li>控制流功能：注册事件回调函数、注册读写回调函数、设定事件掩码、从事件队列中读取事件、清空事件队列；</li>
+    <li>其他功能：获取工作完成情况、获取CPU状态、将事件转换为文本、将API调用的错误码转换为文本。</li>
+    </ul></p>
+    <p><h2>3.2&nbsp;Modbus协议</h2></p>
+    <p>S7-300系列PLC通过安装CP443-1模块，或者使用BCNet-S7转接器，还可以进行Modbus通信。Modbus是1979年Modicon公司开发的用于智能设备之间进行主从方式通信的一种协议。通过此协议，控制器相互之间以及经由网络和其他设备之间可相互通信。它已经成为了一种通用工业标准，用于将不同厂商生产的控制设备连成工业网络。</p>
+    <p>Modbus在ISO的7层网络模型中位于第7层，下面的层有多种不同的配置，在本蜜罐系统中，下层协议为以太网和TCP/IP。</p>
+    <center>
+    <p><img src='image/modbus_protocol2.png'></p>
+    <p>图2&nbsp;Modbus协议栈</p>
+    <p><img src='image/modbus_protocol.png'></p>
+    <p>图3&nbsp;Modbus协议封装</p>
+    </center>
+    <p>Snap7完全没有实现Modbus协议，但它的两个抽象基类——TMsgSocket和TCustomMsgServer为实现Modbus协议提供了方便。另外，Snap7现有的结构不适合于两种协议共同访问存储区，因此对Snap7的结构做了一些调整，将原先嵌入在S7服务器中的PLC的存储区域独立出来。</p>
+    <p>两种协议对于存储区的命名有所不同，因此查阅资料找到它们之间的对应关系也是一项重要的工作，比如S7称之为过程输入映像区的存储区，Modbus称之为输入寄存器，S7称之为过程输出寄存器的存储区，Modbus称之为线圈。</p>
+    <p>Modbus&nbsp;Server面向客户端提供以下功能（括号内为功能码）：<ul>
+    <li>读多个线圈（0x01）；</li>
+    <li>读离散输入（0x02）；</li>
+    <li>读保持寄存器（0x03）；</li>
+    <li>读输入寄存器（0x04）；</li>
+    <li>写单个线圈（0x05）；</li>
+    <li>写单个寄存器（0x06）；</li>
+    <li>写多个线圈（0x0F）；</li>
+    <li>写多个寄存器（0x10）；</li>
+    <li>读设备信息（0x2B）。</li>
+    </ul></p>
+    <p><h2>3.3&nbsp;NpCap抓包</h2></p>
+    <p>NpCap是一个在操作系统网络协议栈中抓包的工具，由一个软件API库和一个网络驱动程序组成。它广泛用于网络协议分析、网络监控、流量生成、用户层网桥和路由器、网络入侵检测（包括端口扫描检测）和网络扫描。</p>
+    <p>NpCap的基本功能包括枚举网络接口、轮询抓包、回调抓包、设定包过滤器等。</p>
+    <p><h2>3.4&nbsp;数据库的使用</h2></p>
+    <p>MySQL数据库支持标准的SQL语句。</p>
+    <p>首先创建本系统所使用的honeypot数据库。</p>
+    <p>然后创建管理员、蜜罐主机、后台监控三个用户并为他们设置权限。其中管理员拥有全部权限，蜜罐主机和后台监控没有创建数据库和数据表的权限，其中蜜罐主机还没有删除数据的权限，因此只能写入数据。</p>
+    <p>最后创建事件记录（虽然名称是s7_events，但包括S7事件和Modbus事件）、包捕获、端口扫描统计三个数据表。</p>
+</div>
+</body>
+</html>
